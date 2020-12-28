@@ -8,7 +8,7 @@ interface IProps {
     menuType: string;
 }
 
-const MenuItem = ({ screenType, onPress, menuType }: IProps) => {
+const MenuItem = ({ screenType, onPress, menuType }: IProps): JSX.Element => {
     const getColor = (): string => {
         if (screenType === menuType) {
             return "#2e8b57";

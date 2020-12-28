@@ -7,7 +7,7 @@ interface IProps {
     item: ICountryStatus;
 }
 
-const CountryDetails = ({ item }: IProps) => {
+const CountryDetails = ({ item }: IProps):JSX.Element => {
     return (
         <View style={styles.mainContainer}>
             <View style={[styles.detailsContainer, styles.shadow]}>
@@ -54,7 +54,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-
         elevation: 5
     },
     countryNameText: {

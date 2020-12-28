@@ -3,7 +3,6 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import { IMAGE_SIZE } from '../../helpers/constants';
 
 
-
 const Overivew = (): JSX.Element => {
     return (<View>
         <View style={styles.imageContainer}>

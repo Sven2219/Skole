@@ -8,7 +8,7 @@ const AllCountries = (): JSX.Element => {
     useEffect(() => {
         getAllCountries();
     }, [])
-    const getAllCountries = async () => {
+    const getAllCountries = async (): Promise<void> => {
         try {
             const result = await axios.get('https://coronavirus-19-api.herokuapp.com/countries');
             setAllCountries(result.data);
@@ -19,9 +19,10 @@ const AllCountries = (): JSX.Element => {
     return (
         <View style={styles.mainContainer}>
             <FlatList
+                windowSize={2}
                 data={allCountries}
                 keyExtractor={(_, index) => index.toString()}
-                renderItem={({ item, index }: { item: ICountryStatus, index: number }) => <CountryDetails item={item} />}
+                renderItem={({ item }: { item: ICountryStatus }) => <CountryDetails item={item}/>}
             />
         </View>
     )
@@ -30,7 +31,7 @@ const AllCountries = (): JSX.Element => {
 const styles = StyleSheet.create({
     mainContainer: {
         flex: 1,
-        backgroundColor:'#fff'
+        backgroundColor: '#fff'
     }
 })
 

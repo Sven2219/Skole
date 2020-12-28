@@ -4,15 +4,16 @@ import SearchCountries from '../fragments/SearchCountries';
 import AllCountries from '../fragments/AllCountries';
 import COVIDInfo from '../fragments/COVIDInfo';
 import { width } from '../helpers/constants';
+import { IFragment } from '../helpers/interfaces';
 
 const initialLayout = { width: width };
 
 const Navigation = (): JSX.Element => {
   const [index, setIndex] = useState(0);
-  const [routes] = useState([
+  const [routes] = useState<IFragment[]>([
     { key: 'all', title: 'All' },
     { key: 'search', title: 'Search' },
-    { key:'info',title:'Info'}
+    { key: 'info', title: 'Info' }
   ]);
 
 

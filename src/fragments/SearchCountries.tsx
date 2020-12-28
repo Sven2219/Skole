@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { TextInput } from 'react-native-gesture-handler';
+import { StyleSheet, View, TextInput } from 'react-native';
 import { ICON_SIZE, TEXT_INPUT_HEIGHT, TEXT_INPUT_WIDTH } from '../helpers/constants';
 import { ICountryStatus } from '../helpers/interfaces';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -11,19 +10,19 @@ const SearchCountries = (): JSX.Element => {
     const [countryName, setCountryName] = useState<string>("");
     const [countryStatus, setCountryStatus] = useState<ICountryStatus>();
 
+
     const searchByCountryName = async (): Promise<void> => {
         try {
-            console.log(countryName)
             if (countryName !== "") {
-                console.log("nismo tu ")
                 const result = await axios.get(`https://coronavirus-19-api.herokuapp.com/countries/${countryName}`);
-                setCountryStatus(result.data);
+                if (result.data !== "Country not found") {
+                    setCountryStatus(result.data);
+                }
             }
         } catch (error) {
             console.log(error)
         }
     }
-
     return (
         <View style={styles.mainContainer}>
             <View style={styles.textInputContainer}>
@@ -37,6 +36,7 @@ const SearchCountries = (): JSX.Element => {
                     <TextInput
                         onChangeText={(countryName: string) => setCountryName(countryName)}
                         placeholder="Croatia"
+                        style={styles.textInputStyle}
                     />
                 </View>
             </View>
@@ -54,12 +54,13 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     textInput: {
+        overflow: 'hidden',
         width: TEXT_INPUT_WIDTH,
         height: TEXT_INPUT_HEIGHT,
-        borderWidth: 0.01,
+        borderWidth: 0.001,
         borderRadius: 10,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     iconPosition: {
         marginLeft: 5
@@ -72,8 +73,10 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.5,
         shadowRadius: 20,
-
         elevation: 3,
+    },
+    textInputStyle: {
+        marginRight: ICON_SIZE * 2
     }
 })
 export default SearchCountries;

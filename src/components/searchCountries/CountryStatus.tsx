@@ -10,7 +10,7 @@ interface IProps {
 
 const CountryStatus = ({ status }: IProps): JSX.Element => {
     return (
-        <ScrollView>
+        <ScrollView >
             <View style={styles.countryNameContainer}>
                 <Text style={styles.countryName}>{status.country}</Text>
             </View>
@@ -57,5 +57,5 @@ const styles = StyleSheet.create({
 })
 
 export default React.memo(CountryStatus, (prevProps, currentProps) => {
-    return prevProps.status == currentProps.status
+    return prevProps.status == currentProps.status;
 })

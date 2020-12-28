@@ -7,9 +7,9 @@ interface IProps {
     data: number;
 }
 
-const Bubble = ({ data, dataTitle }: IProps) => {
+const Bubble = ({ data, dataTitle }: IProps): JSX.Element => {
     return (
-        <View style={[styles.bubbleContainer,styles.shadow]}>
+        <View style={[styles.bubbleContainer, styles.shadow]}>
             <Text style={styles.dataStyle}>{data}</Text>
             <Text style={styles.dataTitleStyle}>{dataTitle}</Text>
         </View>
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         borderRadius: BUBBLE_HEIGHT / 2,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:'#fff'
+        backgroundColor: '#fff'
     },
     dataStyle: {
         fontSize: 18

@@ -12,3 +12,7 @@ export interface ICountryStatus {
     totalTests: number;
     testsPerOneMillion: number;
 }
+export interface IFragment {
+    key: string;
+    title: string;
+}
